@@ -7,8 +7,13 @@ namespace Webapi.Domain.src.Entities
 {
     public class OrderDetail : BaseEntity
     {
-        public Order OrderId { get; set; } = null!;
-        public Product ProductId { get; set; } = null!;
+        public int OrderId { get; set; }
+        public int ProductId { get; set; }
         public bool Shipped { get; set; } = false;
+
+        // Navigation properties
+        public Order Order { get; set; } = null!;
+        public Product Product { get; set; } = null!;
+        public List<OrderItemQuantity> OrderItemQuantities { get; set; } = new List<OrderItemQuantity>();
     }
 }

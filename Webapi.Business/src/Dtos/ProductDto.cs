@@ -10,7 +10,7 @@ namespace Webapi.Business.src.Dtos
         public int Stock { get; set; }
         public string ProductDescription { get; set; } = string.Empty;
         public List<Image> ProductImg { get; set; }
-        public Category CategoryId { get; set; } = null!;
+        public CategoryDto Category { get; set; } = null!;
 
     }
 }

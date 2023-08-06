@@ -2,8 +2,12 @@ namespace Webapi.Domain.src.Entities
 {
     public class OrderItemQuantity
     {
-        public OrderDetail OrderDetailId { get; set; } = null!;
-        public Product ProductId { get; set; } = null!;
+        public int OrderDetailId { get; set; }
+        public int ProductId { get; set; } 
         public int Quantity { get; set; }
+
+        // Navigation properties
+        public OrderDetail OrderDetail { get; set; } = null!;
+        public Product Product { get; set; } = null!;
     }
 }

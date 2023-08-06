@@ -8,7 +8,10 @@ namespace Webapi.Domain.src.Entities
         public int Stock { get; set; }
         public string ProductDescription { get; set; } = string.Empty;
         public List<Image> ProductImg { get; set; }
-        public Category CategoryId { get; set; } = null!;
+        public int CategoryId { get; set; }
+
+        // Navigation properties
+        public Category Category { get; set; } = null!;
 
     }
 }
