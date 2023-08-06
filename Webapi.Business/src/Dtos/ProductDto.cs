@@ -1,8 +1,10 @@
-using System;
-namespace Webapi.Domain.src.Entities
+using Webapi.Domain.src.Entities;
+
+namespace Webapi.Business.src.Dtos
 {
-    public class Product: BaseEntity
+    public class ProductDto
     {
+        
         public string ProductName { get; set; } = string.Empty;
         public decimal Price { get; set; }
         public int Stock { get; set; }

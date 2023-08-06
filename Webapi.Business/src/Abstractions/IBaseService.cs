@@ -2,12 +2,12 @@ using Webapi.Domain.src.Shared;
 
 namespace Webapi.Business.src.Abstractions
 {
-    public interface IBaseService<T>
+    public interface IBaseService<T, TDto>
     {
         
-        IEnumerable<T> GetAll(QueryOptions queryOptions);  // should consider the sorting, searching and pagination all from here
+        IEnumerable<TDto> GetAll(QueryOptions queryOptions); 
         T GetOneById(string id);
-        T UpdateOneById(T updatedEntity);
+        TDto UpdateOneById(string id, TDto updated);
         bool DeleteOneById();
     }
 }
