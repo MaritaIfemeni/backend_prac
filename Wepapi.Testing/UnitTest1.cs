@@ -35,5 +35,23 @@ public class UnitTest1
         Assert.NotNull(result);
     }
 
+    [Fact]
 
+    public void GetOneUserById()
+    {
+        // Arrange
+        Guid userId = Guid.NewGuid();
+        User user = new User { Id = userId, FirstName = "John", LastName = "Doe", Email = "email@com", Password = "password", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now };
+        _mockUserRepo.Setup(repo => repo.GetOneById(userId.ToString())).Returns(user);
+        UserService userService = new UserService(_mockUserRepo.Object, _mapper);
+
+        // Act
+        UserDto result = userService.GetOneById(userId.ToString());
+
+        // Assert
+        Assert.NotNull(result);
+        Assert.Equal("John", result.FirstName);
+        Assert.Equal("Doe", result.LastName);
+        Assert.Equal("email@com", result.Email);
+    }
 }
