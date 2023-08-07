@@ -6,8 +6,9 @@ namespace Webapi.Business.src.Abstractions
     {
         
         IEnumerable<TDto> GetAll(QueryOptions queryOptions); 
-        T GetOneById(string id);
+        TDto GetOneById(string id);
         TDto UpdateOneById(string id, TDto updated);
-        bool DeleteOneById();
+        bool DeleteOneById(string id);
+        
     }
 }

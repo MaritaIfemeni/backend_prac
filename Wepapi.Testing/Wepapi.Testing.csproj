@@ -22,4 +22,11 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Webapi.Business\Webapi.Business.csproj" />
+    <ProjectReference Include="..\Webapi.Domain\Webapi.Domain.csproj" />
+    <ProjectReference Include="..\Webapi.Infrastructure\Webapi.Infrastructure.csproj" />
+    <ProjectReference Include="..\Webapi.Controller\Webapi.Controller.csproj" />
+  </ItemGroup>
+
 </Project>
