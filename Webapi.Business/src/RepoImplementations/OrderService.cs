@@ -7,7 +7,7 @@ using Webapi.Business.src.Abstractions;
 
 namespace Webapi.Business.src.RepoImplementations
 {
-    public class OrderService: BaseService<Order, OrderDto>, IOrderService
+    public class OrderService: BaseService<Order, OrderReadDto, OrderCreateDto, OrderUpdateDto>, IOrderService
     {
 
         private readonly IOrderRepo _orderRepo;

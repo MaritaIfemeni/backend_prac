@@ -6,7 +6,7 @@ using AutoMapper;
 
 namespace Webapi.Business.src.RepoImplementations
 {
-    public class ProductServices : BaseService<Product, ProductDto>, IProductService
+    public class ProductServices : BaseService<Product, ProductReadDto, ProductCreateDto, ProductUpdateDto>, IProductService
     {
 
         private readonly IProductRepo _productRepo;
@@ -14,6 +14,5 @@ namespace Webapi.Business.src.RepoImplementations
         {
             _productRepo = productRepo;
         }
-
     }
 }

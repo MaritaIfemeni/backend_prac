@@ -2,13 +2,14 @@ using Webapi.Domain.src.Shared;
 
 namespace Webapi.Business.src.Abstractions
 {
-    public interface IBaseService<T, TDto>
+    public interface IBaseService<T, TReadDto, TCreateDto, TUpdateDto>
     {
         
-        IEnumerable<TDto> GetAll(QueryOptions queryOptions); 
-        TDto GetOneById(string id);
-        TDto UpdateOneById(string id, TDto updated);
-        bool DeleteOneById(string id);
+        Task<IEnumerable<TReadDto>> GetAll(QueryOptions queryOptions); 
+        Task<TReadDto> GetOneById(string id);
+        Task<TReadDto> UpdateOneById(string id, TUpdateDto updated);
+        Task<bool> DeleteOneById(string id);
+        Task<TReadDto> CreateOne(TCreateDto entityToCreate);
         
     }
 }
