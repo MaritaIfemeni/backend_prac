@@ -1,13 +1,12 @@
 using Webapi.Domain.src.Entities;
+using static Webapi.Domain.src.Entities.Order;
 
 namespace Webapi.Business.src.Dtos
 {
     public class OrderDto
     {
-        public UserDto User { get; set; } = null!;
-        public PaymentDto Payment { get; set; } = null!;
-        public string OrderDescription { get; set; } = string.Empty;
-        public List<OrderDetail> OrderDetail { get; set; } = new List<OrderDetail>();
-        public List<OrderItemQuantity> OrderItemQuantities { get; set; } = new List<OrderItemQuantity>();
+        public User User { get; set; }
+        public OrderStatus Status { get; set; }
+        public List<OrderDetailDto> OrderDetailDto { get; set; }
     }
 }

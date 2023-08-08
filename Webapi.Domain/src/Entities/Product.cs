@@ -1,17 +1,13 @@
 using System;
 namespace Webapi.Domain.src.Entities
 {
-    public class Product: BaseEntity
+    public class Product : BaseEntity
     {
         public string ProductName { get; set; } = string.Empty;
-        public decimal Price { get; set; }
+        public float Price { get; set; }
         public int Stock { get; set; }
-        public string ProductDescription { get; set; } = string.Empty;
-        public List<Image> ProductImg { get; set; }
-        public int CategoryId { get; set; }
-
-        // Navigation properties
-        public Category Category { get; set; } = null!;
-
+        public string Description { get; set; } = string.Empty;
+        public List<Image> ProductImages { get; set; } = new List<Image>();
     }
 }
+

@@ -8,6 +8,7 @@ namespace Webapi.Domain.src.RepoInterfaces
         T GetOneById(string id);
         T UpdateOneById(T orginalEntity, T updatedEntity);
         bool DeleteOneById(T entityToDelete);
+        T CreateOne(T entityToCreate);
     }
 
 

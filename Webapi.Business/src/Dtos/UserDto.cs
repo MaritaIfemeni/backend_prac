@@ -10,5 +10,6 @@ namespace Webapi.Business.src.Dtos
         public string City { get; set; } = string.Empty;
         public string Postcode { get; set; } = string.Empty;
         public string Phone { get; set; } = string.Empty;
+        public string Avatar { get; set; } = string.Empty;
     }
 }

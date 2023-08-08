@@ -6,11 +6,8 @@ namespace Webapi.Business.src.Dtos
     {
         
         public string ProductName { get; set; } = string.Empty;
-        public decimal Price { get; set; }
-        public int Stock { get; set; }
-        public string ProductDescription { get; set; } = string.Empty;
-        public List<Image> ProductImg { get; set; }
-        public CategoryDto Category { get; set; } = null!;
-
+        public float Price { get; set; }
+        public string Description { get; set; } = string.Empty;
+        public List<Image> ProductImages { get; set; } = new List<Image>();
     }
 }

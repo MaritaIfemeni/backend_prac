@@ -12,6 +12,7 @@ namespace Webapi.Domain.src.Entities
         public string City { get; set; } = string.Empty;
         public string Postcode { get; set; } = string.Empty;
         public string Phone { get; set; } = string.Empty;
+        public string Image { get; set; } = string.Empty;
         public UserRole UserRole { get; set; }
     }
 
