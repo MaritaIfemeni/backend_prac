@@ -16,7 +16,7 @@ namespace Webapi.Business.src.RepoImplementations
             _mapper = mapper;
         }
 
-        public virtual async Task<bool> DeleteOneById(string id)
+        public async Task<bool> DeleteOneById(string id)
         {
             var foundItem = await _baseRepo.GetOneById(id);
             if (foundItem is not null)
