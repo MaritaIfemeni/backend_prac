@@ -10,9 +10,10 @@ namespace Webapi.Controller.src.Controllers
     public class OrderController : CrudController<Order, OrderReadDto, OrderCreateDto, OrderUpdateDto>
     {
 
+        private readonly IOrderService _orderService;
         public OrderController(IOrderService baseService) : base(baseService)
         {
-
+            _orderService = baseService;
         }
     }
 }
