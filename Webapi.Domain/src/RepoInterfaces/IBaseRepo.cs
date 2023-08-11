@@ -6,7 +6,7 @@ namespace Webapi.Domain.src.RepoInterfaces
     {
         Task<IEnumerable<T>> GetAll(QueryOptions queryOptions);  // should consider the sorting, searching and pagination all from here
         Task<T> GetOneById(Guid id);
-        Task<T> UpdateOneById(T orginalEntity, T updatedEntity);
+        Task<T> UpdateOneById(T updatedEntity);
         Task<bool> DeleteOneById(T entityToDelete);
         Task<T> CreateOne(T entityToCreate);
     }

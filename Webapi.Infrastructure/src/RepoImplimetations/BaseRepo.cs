@@ -15,6 +15,7 @@ namespace Webapi.Infrastructure.src.RepoImplimetations
             _dbSet = dbContext.Set<T>();
             _context = dbContext;
         }
+
         public virtual async Task<T> CreateOne(T entityToCreate)
         {
             await _dbSet.AddAsync(entityToCreate);
@@ -22,24 +23,24 @@ namespace Webapi.Infrastructure.src.RepoImplimetations
             return entityToCreate;
         }
 
-        public async Task<bool> DeleteOneById(T entityToDelete)
+        public virtual async Task<bool> DeleteOneById(T entityToDelete)
         {
             _dbSet.Remove(entityToDelete);
             await _context.SaveChangesAsync();
             return true;
         }
 
-        public Task<IEnumerable<T>> GetAll(QueryOptions queryOptions)
+        public virtual Task<IEnumerable<T>> GetAll(QueryOptions queryOptions)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<T> GetOneById(Guid id)
+        public virtual async Task<T?> GetOneById(Guid id)
         {
             return await _dbSet.FindAsync(id);
         }
 
-        public async Task<T> UpdateOneById(T orginalEntity, T updatedEntity)
+        public virtual async Task<T> UpdateOneById(T updatedEntity)
         {
             _dbSet.Update(updatedEntity);
             await _context.SaveChangesAsync();

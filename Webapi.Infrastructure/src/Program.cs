@@ -3,14 +3,11 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.Filters;
 using Webapi.Infrastructure.src.Database;
-using Npgsql;
 using System.Text;
-using Webapi.Business.src.Shared;
 using Webapi.Infrastructure.src.RepoImplimetations;
 using Webapi.Business.src.RepoImplementations;
 using Webapi.Domain.src.RepoInterfaces;
 using Webapi.Business.src.Abstractions;
-using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 

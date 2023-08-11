@@ -35,10 +35,10 @@ namespace Webapi.Infrastructure.src.RepoImplimetations
             return user;
         }
 
-        public override Task<User> CreateOne(User entity)
+        public override async Task<User> CreateOne(User entity)
         {
             entity.UserRole = UserRole.User;
-            return base.CreateOne(entity);
+            return await base.CreateOne(entity);
         }
 
         public Task<User> UpdatePassword(User user, string newPassword)
@@ -49,6 +49,12 @@ namespace Webapi.Infrastructure.src.RepoImplimetations
         public Task<User> FindByEmail(string email)
         {
             throw new NotImplementedException();
+        }
+
+        public override async Task<User> UpdateOneById(User updatedEntity)
+        {
+            updatedEntity.UserRole = UserRole.User;
+            return await base.UpdateOneById(updatedEntity);
         }
     }
 }

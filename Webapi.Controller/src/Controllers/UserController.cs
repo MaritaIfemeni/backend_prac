@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Webapi.Controller.src.Controllers
 {
-    [Authorize]
     public class UserController : CrudController<User, UserReadDto, UserCreateDto, UserUpdateDto>
     {
         private readonly IUserService _userService;
@@ -16,16 +15,25 @@ namespace Webapi.Controller.src.Controllers
             _userService = baseService;
         }
 
-        [AllowAnonymous]
-        public override async Task<ActionResult<UserReadDto>> CreateOne([FromBody] UserCreateDto dto)
+        // [AllowAnonymous]
+        // public override async Task<ActionResult<UserReadDto>> CreateOne([FromBody] UserCreateDto dto)
+        // {
+        //     var createdObject = await base.CreateOne(dto);
+        //     var createdUser = CreatedAtAction(nameof(CreateOne), createdObject);
+        //     return createdUser;
+        // }
+
+        public override async Task<ActionResult<UserReadDto>> UpdateOneById([FromRoute] Guid id, [FromBody] UserUpdateDto dto)
         {
-            var createdObject = await base.CreateOne(dto);
-            return CreatedAtAction(nameof(CreateOne), createdObject);
+            var updatedUser = await base.UpdateOneById(id, dto);
+            return updatedUser;
         }
 
-        public override Task<ActionResult<UserReadDto>> GetOneById(Guid id)
+        [AllowAnonymous]
+        public override async Task<ActionResult<UserReadDto>> GetOneById([FromRoute] Guid id)
         {
-            return base.GetOneById(id);
+            var foundUser = await base.GetOneById(id);
+            return foundUser;
         }
     }
 }
