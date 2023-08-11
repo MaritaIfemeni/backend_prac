@@ -17,7 +17,7 @@ namespace Webapi.Controller.src.Controllers
         }
 
         [AllowAnonymous]
-        public override async Task<ActionResult<ProductReadDto>> GetOneById(string id)
+        public override async Task<ActionResult<ProductReadDto>> GetOneById(Guid id)
         {
             return Ok(await base.GetOneById(id));
         }

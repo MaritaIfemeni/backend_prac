@@ -2,3 +2,6 @@
 bin/
 obj/
 .fake
+
+appsettings.json
+appsettings.Development.json

@@ -2,36 +2,33 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.Filters;
-using Webapi.Business.src.Abstractions;
+using Webapi.Infrastructure.src.Database;
+using Npgsql;
+using System.Text;
+using Webapi.Business.src.Shared;
+using Webapi.Infrastructure.src.RepoImplimetations;
 using Webapi.Business.src.RepoImplementations;
 using Webapi.Domain.src.RepoInterfaces;
-// using Webapi.Infrastructure.src.Database;
-// using Webapi.Infrastructure.src.RepoImplimetations;
+using Webapi.Business.src.Abstractions;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
-using Npgsql;
-using Webapi.Infrastructure.src;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Add Automapper DI
+builder.Services.AddAutoMapper(typeof(Program).Assembly);
 
+// Add db context
+builder.Services.AddDbContext<DatabaseContex>();
+
+// Add service DI
+builder.Services
+.AddScoped<IUserRepo, UserRepo>()
+.AddScoped<IUserService, UserService>();
 
 
 // Add services to the container.
 
 builder.Services.AddControllers();
-
-// Register the database context for dependency injection
-//builder.Services.AddDbContext<DatabaseContex>(options =>
-    //options.UseNpgsql(builder.Configuration.GetConnectionString("Default")));
-
-//add service for auto dependency injection
-//builder.Services.AddScoped<IOrderService, OrderService>();
-//builder.Services.AddScoped<IProductRepo, ProductRepo>();
-//builder.Services.AddScoped<IProductService, ProductServices>();
-builder.Services.AddScoped<IUserRepo, UserRepo>();
-builder.Services.AddScoped<IUserService, UserService>();
-builder.Services.AddAutoMapper(typeof(Program).Assembly); 
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -60,7 +57,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     {
         ValidateIssuer = true,
         ValidIssuer = "prackey-backend",
-        IssuerSigningKey = new JsonWebKey("prac-backend"),
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("prackey-backend-jsdguyfsdgcjsdbchjsdb jdhscjysdcsdj")),
         ValidateIssuerSigningKey = true
     };
 });

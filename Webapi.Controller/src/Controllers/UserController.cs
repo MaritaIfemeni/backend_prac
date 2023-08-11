@@ -20,10 +20,10 @@ namespace Webapi.Controller.src.Controllers
         public override async Task<ActionResult<UserReadDto>> CreateOne([FromBody] UserCreateDto dto)
         {
             var createdObject = await base.CreateOne(dto);
-            return CreatedAtAction("Created", createdObject);
+            return CreatedAtAction(nameof(CreateOne), createdObject);
         }
 
-        public override Task<ActionResult<UserReadDto>> GetOneById(string id)
+        public override Task<ActionResult<UserReadDto>> GetOneById(Guid id)
         {
             return base.GetOneById(id);
         }

@@ -22,7 +22,7 @@ namespace Webapi.Controller.src.Controllers
         }
 
         [HttpGet("{id}")]
-        public virtual async Task<ActionResult<TReadDto>> GetOneById(string id)
+        public virtual async Task<ActionResult<TReadDto>> GetOneById(Guid id)
         {
             return Ok(await _baseService.GetOneById(id));
         }
@@ -34,14 +34,14 @@ namespace Webapi.Controller.src.Controllers
             return CreatedAtAction("Created", createdObject);
         }
         [HttpPatch("{id}")]
-        public virtual async Task<ActionResult<TReadDto>> UpdateOneById([FromRoute] string id, [FromForm] TUpdateDto update)
+        public virtual async Task<ActionResult<TReadDto>> UpdateOneById([FromRoute] Guid id, [FromForm] TUpdateDto update)
         {
             var updatedObject = await _baseService.UpdateOneById(id, update);
             return Ok(updatedObject);
         }
 
         [HttpDelete("{id}")]
-        public virtual async Task<ActionResult<bool>> DeleteOneById([FromRoute] string id)
+        public virtual async Task<ActionResult<bool>> DeleteOneById([FromRoute] Guid id)
         {
             //some other options:
             // return Ok(await _baseService.DeleteOneById(id));

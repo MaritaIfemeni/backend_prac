@@ -5,7 +5,8 @@ using Webapi.Domain.src.RepoInterfaces;
 using Microsoft.IdentityModel.Tokens;
 using System.Security.Claims;
 using System.IdentityModel.Tokens.Jwt;
-
+using System.Security.Cryptography;
+using System.Text;
 
 namespace Webapi.Business.src.Shared
 {
@@ -29,36 +30,14 @@ namespace Webapi.Business.src.Shared
             return GenerateToken(foundUserEmail);
         }
 
-        // private string GenerateToken(User user)
-        // {
-        //     var claims = new List<Claim>{
-        //         new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
-        //         new Claim(ClaimTypes.Role, user.UserRole.ToString() )
-        //     };
-        //     var securityKey = new JsonWebKey("prackey-backend");
-        //     var signingCredentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256Signature);
-        //     var securityTokenDescriptor = new SecurityTokenDescriptor
-        //     {
-        //         Issuer = "prac-backend",
-        //         Expires = DateTime.Now.AddMinutes(10),
-        //         Subject = new ClaimsIdentity(claims),
-        //         SigningCredentials = signingCredentials
-        //     };
-        //     var jwtSecurityTokenHandler = new JwtSecurityTokenHandler();
-        //     var token = jwtSecurityTokenHandler.CreateToken(securityTokenDescriptor);
-        //     return token.ToString();
-        // }
-
         private string GenerateToken(User user)
         {
             var claims = new List<Claim>{
-        new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
-        new Claim(ClaimTypes.Role, user.UserRole.ToString())
-    };
+                new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
+                new Claim(ClaimTypes.Role, user.UserRole.ToString() )
+            };
 
-            var jwkJson = @"{ ""kty"": ""oct"", ""kid"": ""prackey-backend"", ""use"": ""sig"", ""alg"": ""HS256"", ""k"": ""your-secret-key-here"" }";
-            var securityKey = new JsonWebKey(jwkJson);
-
+            var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("prackey-backend-jsdguyfsdgcjsdbchjsdb jdhscjysdcsdj"));
             var signingCredentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256Signature);
             var securityTokenDescriptor = new SecurityTokenDescriptor
             {

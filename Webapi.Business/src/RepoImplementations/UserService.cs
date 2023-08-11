@@ -16,7 +16,7 @@ namespace Webapi.Business.src.RepoImplementations
             _userRepo = userRepo;
         }
 
-        public async Task<UserReadDto> UpdatePassword(string id, string newPassword)
+        public async Task<UserReadDto> UpdatePassword(Guid id, string newPassword)
         {
             var foundUser = await _userRepo.GetOneById(id);
             if (foundUser is null)
