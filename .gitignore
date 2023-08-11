@@ -5,3 +5,9 @@ obj/
 
 appsettings.json
 appsettings.Development.json
+
+// remove Webapi.Infrastructure.Migrations files
+**/Migrations/
+
+
+```
