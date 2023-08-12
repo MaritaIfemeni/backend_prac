@@ -3,6 +3,7 @@ using Webapi.Domain.src.Entities;
 using Webapi.Business.src.Dtos;
 using Webapi.Business.src.Abstractions;
 using Microsoft.AspNetCore.Mvc;
+using Webapi.Domain.src.Shared;
 
 namespace Webapi.Controller.src.Controllers
 {
@@ -27,6 +28,12 @@ namespace Webapi.Controller.src.Controllers
         {
             var updatedUser = await base.UpdateOneById(id, dto);
             return updatedUser;
+        }
+
+        [Authorize]
+        public override async Task<ActionResult<IEnumerable<UserReadDto>>> GetAll([FromQuery] QueryOptions queryOptions)
+        {
+            return Ok(await base.GetAll(queryOptions));
         }
 
         [AllowAnonymous]

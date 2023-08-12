@@ -22,12 +22,17 @@ namespace Webapi.Infrastructure.src.Database
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             var builder = new NpgsqlDataSourceBuilder(_config.GetConnectionString("Default"));
+            builder.MapEnum<UserRole>();
+            optionsBuilder.AddInterceptors(new TimeStampInterceptor());
             optionsBuilder.UseNpgsql(builder.Build()).UseSnakeCaseNamingConvention();
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+            modelBuilder.HasPostgresEnum<UserRole>();
+            modelBuilder.Entity<User>().HasIndex(u => u.Email).IsUnique();
+            //modelBuilder.Entity<OrderDetail>().HasKey("OrderId", "ProductId")  //Add this line for the productdetail primary keys
         }
     }
 }

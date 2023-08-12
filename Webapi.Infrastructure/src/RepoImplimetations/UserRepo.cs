@@ -23,7 +23,7 @@ namespace Webapi.Infrastructure.src.RepoImplimetations
             return user;
         }
 
-        public async Task<User?> FindOneByEmail(string email)
+        public async Task<User?> FindByEmail(string email)
         {
             return await _users.FirstOrDefaultAsync(u => u.Email == email);
         }
@@ -41,20 +41,10 @@ namespace Webapi.Infrastructure.src.RepoImplimetations
             return await base.CreateOne(entity);
         }
 
-        public Task<User> UpdatePassword(User user, string newPassword)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<User> FindByEmail(string email)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override async Task<User> UpdateOneById(User updatedEntity)
-        {
-            updatedEntity.UserRole = UserRole.User;
-            return await base.UpdateOneById(updatedEntity);
-        }
+        // public override async Task<User> UpdateOneById(User updatedEntity)
+        // {
+        //     updatedEntity.UserRole = UserRole.User;
+        //     return await base.UpdateOneById(updatedEntity);
+        // }
     }
 }

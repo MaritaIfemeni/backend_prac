@@ -5,7 +5,6 @@ using Webapi.Domain.src.RepoInterfaces;
 using Microsoft.IdentityModel.Tokens;
 using System.Security.Claims;
 using System.IdentityModel.Tokens.Jwt;
-using System.Security.Cryptography;
 using System.Text;
 
 namespace Webapi.Business.src.Shared
@@ -21,16 +20,16 @@ namespace Webapi.Business.src.Shared
 
         public async Task<string> VerifyCredentials(UserCredentialsDto credentials)
         {
-            var foundUserEmail = await _userRepo.FindByEmail(credentials.Email);
+            var foundUserEmail = await _userRepo.FindByEmail(credentials.Email) ?? throw new Exception("Email not found");
             var isAuthenticated = PasswordService.VerifyPassword(credentials.Password, foundUserEmail.Password, foundUserEmail.Salt);
             if (!isAuthenticated)
             {
-                throw new Exception("Invalid credentials");
+                throw ServiceExeption.UnAuthAexeption();
             }
             return GenerateToken(foundUserEmail);
         }
 
-        private string GenerateToken(User user)
+        private string GenerateToken(User user)  // this logic needs to go infra layer!!! And Hide the key
         {
             var claims = new List<Claim>{
                 new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),

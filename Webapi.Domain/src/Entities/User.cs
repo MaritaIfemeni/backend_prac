@@ -1,3 +1,5 @@
+using System.Text.Json.Serialization;
+
 namespace Webapi.Domain.src.Entities
 {
     public class User : BaseEntity
@@ -18,6 +20,7 @@ namespace Webapi.Domain.src.Entities
 
     }
 
+    [JsonConverter(typeof(JsonStringEnumConverter))]
     public enum UserRole
     {
         Admin = 1,

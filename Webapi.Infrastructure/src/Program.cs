@@ -8,6 +8,7 @@ using Webapi.Infrastructure.src.RepoImplimetations;
 using Webapi.Business.src.RepoImplementations;
 using Webapi.Domain.src.RepoInterfaces;
 using Webapi.Business.src.Abstractions;
+using Webapi.Business.src.Shared;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,7 +21,8 @@ builder.Services.AddDbContext<DatabaseContex>();
 // Add service DI
 builder.Services
 .AddScoped<IUserRepo, UserRepo>()
-.AddScoped<IUserService, UserService>();
+.AddScoped<IUserService, UserService>()
+.AddScoped<IAuthService, AuthServices>();
 
 
 // Add services to the container.
@@ -53,7 +55,8 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     options.TokenValidationParameters = new TokenValidationParameters
     {
         ValidateIssuer = true,
-        ValidIssuer = "prackey-backend",
+        ValidIssuer = "prac-backend",
+        ValidateAudience = false,
         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("prackey-backend-jsdguyfsdgcjsdbchjsdb jdhscjysdcsdj")),
         ValidateIssuerSigningKey = true
     };

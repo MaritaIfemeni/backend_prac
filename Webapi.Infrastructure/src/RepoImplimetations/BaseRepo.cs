@@ -30,9 +30,9 @@ namespace Webapi.Infrastructure.src.RepoImplimetations
             return true;
         }
 
-        public virtual Task<IEnumerable<T>> GetAll(QueryOptions queryOptions)
+        public virtual async Task<IEnumerable<T>> GetAll(QueryOptions queryOptions)
         {
-            throw new NotImplementedException();
+            return await _dbSet.ToArrayAsync(); //TODO: need to implement the queryOptions
         }
 
         public virtual async Task<T?> GetOneById(Guid id)
