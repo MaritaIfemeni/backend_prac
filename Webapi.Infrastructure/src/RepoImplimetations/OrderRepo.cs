@@ -5,17 +5,18 @@ using Webapi.Infrastructure.src.Database;
 
 namespace Webapi.Infrastructure.src.RepoImplimetations
 {
-    public class ProductRepo : BaseRepo<Product>, IProductRepo
-    {
 
-        private readonly DbSet<Product> _products;
+
+    public class OrderRepo
+    {
+        private readonly DbSet<Order> _orders;
         private readonly DatabaseContex _context;
 
-        public ProductRepo(DatabaseContex dbContext) : base(dbContext)
+        public OrderRepo(DatabaseContex dbContext)
         {
-            _products = dbContext.Products;
+            _orders = dbContext.Orders;
             _context = dbContext;
-        }
 
+        }
     }
 }

@@ -29,6 +29,7 @@ namespace Webapi.Business.src.RepoImplementations
 
         public virtual async Task<IEnumerable<TReadDto>> GetAll(QueryOptions queryOptions)
         {
+           queryOptions.Search = "";
             return _mapper.Map<IEnumerable<TReadDto>>(await _baseRepo.GetAll(queryOptions));
         }
 
@@ -39,16 +40,29 @@ namespace Webapi.Business.src.RepoImplementations
 
         public virtual async Task<TReadDto> UpdateOneById(Guid id, TUpdateDto updated)
         {
-            var foundItem = await _baseRepo.GetOneById(id);
-            if (foundItem is null)
+            var entity = await _baseRepo.GetOneById(id);
+
+            if (entity == null)
             {
-                await _baseRepo.DeleteOneById(foundItem);
-                throw new Exception("Not Found"); // change this to a custom exception
+                throw new Exception($"Entity with id {id} not found.");
             }
 
-            var updatedEntity = _baseRepo.UpdateOneById(_mapper.Map<T>(updated));
+            _mapper.Map(updated, entity);
+
+            var updatedEntity = await _baseRepo.UpdateOneById(entity);
+
             return _mapper.Map<TReadDto>(updatedEntity);
         }
+
+        // public virtual async Task<TReadDto> UpdateOneById(Guid id, TUpdateDto updated)  //this is not working?
+        // {
+        //     var foundItem = await _baseRepo.GetOneById(id);
+        //     if (foundItem is null)
+        //     {
+        //         throw new Exception("Not Found"); // change this to a custom exception
+        //     }
+        //     return _mapper.Map<TReadDto>(await _baseRepo.UpdateOneById( _mapper.Map<T>(updated)));
+        // }
 
         public virtual async Task<TReadDto> CreateOne(TCreateDto newEntity)
         {

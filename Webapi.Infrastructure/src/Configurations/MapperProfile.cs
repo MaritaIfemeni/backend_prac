@@ -11,6 +11,10 @@ namespace Webapi.Infrastructure.src.Configurations
             CreateMap<User, UserReadDto>();
             CreateMap<UserUpdateDto, User>();
             CreateMap<UserCreateDto, User>();
+
+            CreateMap<Product, ProductReadDto>();
+            CreateMap<ProductUpdateDto, Product>();
+            CreateMap<ProductCreateDto, Product>();
         }
     }
 }

@@ -40,11 +40,11 @@ namespace Webapi.Infrastructure.src.RepoImplimetations
             entity.UserRole = UserRole.User;
             return await base.CreateOne(entity);
         }
+        public override async Task<User> UpdateOneById(User updatedEntity)
+        {
+            updatedEntity.UserRole = UserRole.User;
+            return await base.UpdateOneById(updatedEntity);
+        }
 
-        // public override async Task<User> UpdateOneById(User updatedEntity)
-        // {
-        //     updatedEntity.UserRole = UserRole.User;
-        //     return await base.UpdateOneById(updatedEntity);
-        // }
     }
 }

@@ -22,7 +22,10 @@ builder.Services.AddDbContext<DatabaseContex>();
 builder.Services
 .AddScoped<IUserRepo, UserRepo>()
 .AddScoped<IUserService, UserService>()
-.AddScoped<IAuthService, AuthServices>();
+.AddScoped<IAuthService, AuthServices>()
+.AddScoped<IProductRepo, ProductRepo>()
+.AddScoped<IProductService, ProductServices>();
+
 
 
 // Add services to the container.

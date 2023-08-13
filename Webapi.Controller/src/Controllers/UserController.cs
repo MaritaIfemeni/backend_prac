@@ -24,17 +24,18 @@ namespace Webapi.Controller.src.Controllers
         //     return createdUser;
         // }
 
-        public override async Task<ActionResult<UserReadDto>> UpdateOneById([FromRoute] Guid id, [FromBody] UserUpdateDto dto)
-        {
-            var updatedUser = await base.UpdateOneById(id, dto);
-            return updatedUser;
-        }
+        // public override async Task<ActionResult<UserReadDto>> UpdateOneById([FromRoute] Guid id, [FromBody] UserUpdateDto dto)
+        // {
 
-        [Authorize]
-        public override async Task<ActionResult<IEnumerable<UserReadDto>>> GetAll([FromQuery] QueryOptions queryOptions)
-        {
-            return Ok(await base.GetAll(queryOptions));
-        }
+        //     var updatedUser = await base.UpdateOneById(id, dto);
+        //     return updatedUser;
+        // }
+
+        // //[Authorize]
+        // public override async Task<ActionResult<IEnumerable<UserReadDto>>> GetAll([FromQuery] QueryOptions queryOptions)
+        // {
+        //     return Ok(await base.GetAll(queryOptions));
+        // }
 
         [AllowAnonymous]
         public override async Task<ActionResult<UserReadDto>> GetOneById([FromRoute] Guid id)

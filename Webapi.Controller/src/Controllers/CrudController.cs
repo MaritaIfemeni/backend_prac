@@ -37,8 +37,7 @@ namespace Webapi.Controller.src.Controllers
         [HttpPatch("{id:Guid}")]
         public virtual async Task<ActionResult<TReadDto>> UpdateOneById([FromRoute] Guid id, [FromForm] TUpdateDto update)
         {
-            var updatedObject = await _baseService.UpdateOneById(id, update);
-            return Ok(updatedObject);
+            return Ok(await _baseService.UpdateOneById(id, update));
         }
 
         [HttpDelete("{id:Guid}")]

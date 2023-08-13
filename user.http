@@ -27,8 +27,28 @@ Content-Type: application/json
     }
 
 ### Get all users
-
 GET http://localhost:5136/api/v1/users
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJmMjQ0MDY5ZS00YjAzLTRjZTItOTdjNS1iNjY0YzU4NzA3MjAiLCJyb2xlIjoiVXNlciIsIm5iZiI6MTY5MTgyNTkxNiwiZXhwIjoxNjkxODI2NTE2LCJpYXQiOjE2OTE4MjU5MTYsImlzcyI6InByYWMtYmFja2VuZCJ9.5I1wZK-OJ5CbZVYxyaBDNNGDoGyR2PvFFtC0S3-dK1Y
 
+### Get One user
+GET http://localhost:5136/api/v1/users/7dc70b43-b21a-449a-b2a9-641d99943019
+
+### Delete user
+DELETE http://localhost:5136/api/v1/users/f244069e-4b03-4ce2-97c5-b664c5870720
+
+### Update user
+
+PATCH  http://localhost:5136/api/v1/users/7dc70b43-b21a-449a-b2a9-641d99943019
+Content-Type: application/json
+
+    {
+    "firstName": "string",
+    "lastName": "string",
+    "email": "testi2@emai",
+    "address": "string",
+    "city": "string",
+    "postcode": "string",
+    "phone": "string",
+    "avatar": "string",
+    }

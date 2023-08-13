@@ -8,6 +8,8 @@ namespace Webapi.Infrastructure.src.Database
     {
         private readonly IConfiguration _config;
         public DbSet<User> Users { get; set; }
+        public DbSet<Product> Products { get; set; }
+        public DbSet<Order> Orders { get; set; }
 
         public DatabaseContex(DbContextOptions options, IConfiguration config) : base(options)
         {
@@ -32,7 +34,12 @@ namespace Webapi.Infrastructure.src.Database
             base.OnModelCreating(modelBuilder);
             modelBuilder.HasPostgresEnum<UserRole>();
             modelBuilder.Entity<User>().HasIndex(u => u.Email).IsUnique();
-            //modelBuilder.Entity<OrderDetail>().HasKey("OrderId", "ProductId")  //Add this line for the productdetail primary keys
+            modelBuilder.Entity<OrderDetail>().HasKey("OrderId", "ProductId");  //Add this line for the productdetail primary keys
+
+            modelBuilder.Entity<Product>()
+                .HasMany(p => p.ProductImages) // A product has many images
+                .WithOne()                     // An image belongs to one product
+                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

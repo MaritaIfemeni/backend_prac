@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Webapi.Controller.src.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class ProductController : CrudController<Product, ProductReadDto, ProductCreateDto, ProductUpdateDto>
     {
 
