@@ -1,13 +1,29 @@
+# POST http://localhost:5136/api/v1/users/admin
+# Content-Type: application/json
+
+#     {
+#     "username": "string",
+#     "firstName": "string",
+#     "lastName": "string",
+#     "email": "string",
+#     "address": "string",
+#     "city": "string",
+#     "postcode": "string",
+#     "phone": "string",
+#     "avatar": "string",
+#     "password": "string"
+#     }
+
 ## create one user
 
 POST http://localhost:5136/api/v1/users
 Content-Type: application/json
     
     {
-    "username": "Testii",
-    "firstName": "string",
+    "username": "Testii32323",
+    "firstName": "string11",
     "lastName": "string",
-    "email": "testi2@email",
+    "email": "te232i2@",
     "address": "string",
     "city": "string",
     "postcode": "string",
@@ -22,17 +38,16 @@ POST http://localhost:5136/api/v1/auth
 Content-Type: application/json
 
     {
-    "email": "email",
-    "password": "password"
+    "email": "string",
+    "password": "string"
     }
 
 ### Get all users
 GET http://localhost:5136/api/v1/users
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJmMjQ0MDY5ZS00YjAzLTRjZTItOTdjNS1iNjY0YzU4NzA3MjAiLCJyb2xlIjoiVXNlciIsIm5iZiI6MTY5MTgyNTkxNiwiZXhwIjoxNjkxODI2NTE2LCJpYXQiOjE2OTE4MjU5MTYsImlzcyI6InByYWMtYmFja2VuZCJ9.5I1wZK-OJ5CbZVYxyaBDNNGDoGyR2PvFFtC0S3-dK1Y
-
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiI5MTMxNGNmZC1jNzhkLTQ1M2QtYjc1Zi0xOTlkNGU3MWNiMzMiLCJyb2xlIjoiQWRtaW4iLCJuYmYiOjE2OTIwMjU0MDEsImV4cCI6MTY5MjAyNjAwMSwiaWF0IjoxNjkyMDI1NDAxLCJpc3MiOiJwcmFjLWJhY2tlbmQifQ.VfMrYgoeVicW9LIK7pnWxfa3AQIFRETdTvd4mMcss8U
 ### Get One user
-GET http://localhost:5136/api/v1/users/7dc70b43-b21a-449a-b2a9-641d99943019
+GET http://localhost:5136/api/v1/users/e8e9eafc-dce9-4d5a-9909-db981ce539ea
 
 ### Delete user
 DELETE http://localhost:5136/api/v1/users/f244069e-4b03-4ce2-97c5-b664c5870720

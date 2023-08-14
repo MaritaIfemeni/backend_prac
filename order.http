@@ -1,0 +1,30 @@
+## Get all orders
+GET http://localhost:5136/api/v1/orders
+
+POST http://localhost:5136/api/v1/orders
+Content-Type: application/json
+
+{
+  "orderStatus": 0,
+  "user": {
+    "username": "string",
+    "firstName": "string",
+    "lastName": "string",
+    "email": "string",
+    "address": "string",
+    "city": "string",
+    "postcode": "string",
+    "phone": "string",
+    "avatar": "string",
+    "userRole": "Admin"
+  },
+  "userId": "6caaecba-9c15-4923-bb4f-9749a3b4fd54",
+  "orderDetails": [
+    {
+      "productId": "dc3dc1eb-6a6a-450d-9865-2cec8d2d0d25",
+      "quantity": 5
+    }
+  ]
+}
+
+

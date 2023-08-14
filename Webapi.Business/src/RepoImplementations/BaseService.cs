@@ -29,8 +29,9 @@ namespace Webapi.Business.src.RepoImplementations
 
         public virtual async Task<IEnumerable<TReadDto>> GetAll(QueryOptions queryOptions)
         {
-           queryOptions.Search = "";
-            return _mapper.Map<IEnumerable<TReadDto>>(await _baseRepo.GetAll(queryOptions));
+            queryOptions.Search = "";
+            var result = await _baseRepo.GetAll(queryOptions);
+            return _mapper.Map<IEnumerable<TReadDto>>(result);
         }
 
         public virtual async Task<TReadDto> GetOneById(Guid id)

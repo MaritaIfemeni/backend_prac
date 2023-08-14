@@ -10,6 +10,8 @@ namespace Webapi.Infrastructure.src.Database
         public DbSet<User> Users { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<Order> Orders { get; set; }
+        public  DbSet<OrderDetail> OrderDetails { get; set; }
+        public DbSet<Image> Images { get; set; }
 
         public DatabaseContex(DbContextOptions options, IConfiguration config) : base(options)
         {

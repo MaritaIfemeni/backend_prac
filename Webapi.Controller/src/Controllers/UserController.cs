@@ -16,32 +16,25 @@ namespace Webapi.Controller.src.Controllers
             _userService = baseService;
         }
 
-        // [AllowAnonymous]
-        // public override async Task<ActionResult<UserReadDto>> CreateOne([FromBody] UserCreateDto dto)
-        // {
-        //     var createdObject = await base.CreateOne(dto);
-        //     var createdUser = CreatedAtAction(nameof(CreateOne), createdObject);
-        //     return createdUser;
-        // }
+        //     // [Authorize(Roles = "Admin")]
+        //     // [HttpPost("admin")]
+        //     public async Task<ActionResult<UserReadDto>> CreateAdmin([FromBody] UserCreateDto dto)
+        //     {
+        //         return CreatedAtAction(nameof(CreateAdmin), await _userService.GreateAdmin(dto));
+        //     }
 
-        // public override async Task<ActionResult<UserReadDto>> UpdateOneById([FromRoute] Guid id, [FromBody] UserUpdateDto dto)
-        // {
 
-        //     var updatedUser = await base.UpdateOneById(id, dto);
-        //     return updatedUser;
-        // }
+        //    //[Authorize(Roles = "Admin")]
+        //     public override async Task<ActionResult<IEnumerable<UserReadDto>>> GetAll([FromQuery] QueryOptions queryOptions)
+        //     {
 
-        // //[Authorize]
-        // public override async Task<ActionResult<IEnumerable<UserReadDto>>> GetAll([FromQuery] QueryOptions queryOptions)
-        // {
-        //     return Ok(await base.GetAll(queryOptions));
-        // }
+        //         return Ok(await _userService.GetAll(queryOptions));
+        //     }
 
         [AllowAnonymous]
         public override async Task<ActionResult<UserReadDto>> GetOneById([FromRoute] Guid id)
         {
-            var foundUser = await base.GetOneById(id);
-            return foundUser;
+            return Ok(await _userService.GetOneById(id));
         }
     }
 }

@@ -9,6 +9,7 @@ using Webapi.Business.src.RepoImplementations;
 using Webapi.Domain.src.RepoInterfaces;
 using Webapi.Business.src.Abstractions;
 using Webapi.Business.src.Shared;
+using Webapi.Infrastructure.src.AuthorizationRequirement;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -45,6 +46,10 @@ builder.Services.AddSwaggerGen(options =>
     options.OperationFilter<SecurityRequirementsOperationFilter>();
 });
 
+// add policy based requirement handler to service
+builder.Services
+.AddSingleton<OwnerOnlyRequirementHandler>();
+
 //Config route (like lowercases etc.)
 builder.Services.Configure<RouteOptions>(options =>
 {
@@ -64,6 +69,12 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         ValidateIssuerSigningKey = true
     };
 });
+
+builder.Services.AddAuthorization(options =>
+{
+   options.AddPolicy("OwnerOnly", policy => policy.Requirements.Add(new OwnerOnlyRequirement()));
+});
+
 
 var app = builder.Build();
 

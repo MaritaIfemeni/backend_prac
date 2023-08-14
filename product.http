@@ -1,0 +1,22 @@
+
+## create a new product
+POST http://localhost:5136/api/v1/products
+Content-Type: application/json
+
+{
+  "productName": "Uusi Product",
+  "price": 100,
+  "stock": 100,
+  "description": "string",
+  "productImages": [
+    {
+      "id": "3fa82264-5717-4332-b3fc-2c963f66afa6",
+      "createdAt": "2023-08-14T16:50:11.911Z",
+      "updatedAt": "2023-08-14T16:50:11.912Z",
+      "link": "string"
+    }
+  ]
+}
+
+### Get all products
+GET http://localhost:5136/api/v1/products

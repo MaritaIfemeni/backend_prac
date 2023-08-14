@@ -7,6 +7,7 @@ namespace Webapi.Business.src.Dtos
 
         public OrderStatus OrderStatus { get; set; }
         public UserReadDto User { get; set; }
+        public Guid UserId { get; set; }
         public List<OrderDetailReadDto> OrderDetails { get; set; }
     }
 

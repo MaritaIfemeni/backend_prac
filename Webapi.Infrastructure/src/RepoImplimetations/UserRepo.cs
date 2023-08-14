@@ -20,6 +20,7 @@ namespace Webapi.Infrastructure.src.RepoImplimetations
         {
             user.UserRole = UserRole.Admin;
             await _users.AddAsync(user);
+            await _context.SaveChangesAsync();
             return user;
         }
 
