@@ -1,3 +1,4 @@
+using AutoMapper.Configuration.Annotations;
 using Webapi.Domain.src.Entities;
 
 namespace Webapi.Business.src.Dtos
@@ -27,6 +28,7 @@ namespace Webapi.Business.src.Dtos
         public string Postcode { get; set; } = string.Empty;
         public string Phone { get; set; } = string.Empty;
         public string Avatar { get; set; } = string.Empty;
+        [Ignore]
         public string Password { get; set; } = string.Empty;
     }
 
@@ -47,6 +49,4 @@ namespace Webapi.Business.src.Dtos
         public string Email { get; set; } = string.Empty;
         public string Password { get; set; } = string.Empty;
     }
-
-    
 }

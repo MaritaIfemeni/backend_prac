@@ -24,9 +24,9 @@ builder.Services
 .AddScoped<IUserService, UserService>()
 .AddScoped<IAuthService, AuthServices>()
 .AddScoped<IProductRepo, ProductRepo>()
-.AddScoped<IProductService, ProductServices>();
-
-
+.AddScoped<IProductService, ProductServices>()
+.AddScoped<IOrderRepo, OrderRepo>()
+.AddScoped<IOrderService, OrderService>();
 
 // Add services to the container.
 
@@ -75,6 +75,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+// Enable CORS with the default policy (allow any origin, method, and header)
+app.UseCors(builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 
 app.UseAuthentication();
 

@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Webapi.Controller.src.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class OrderController : CrudController<Order, OrderReadDto, OrderCreateDto, OrderUpdateDto>
     {
 
@@ -14,6 +14,13 @@ namespace Webapi.Controller.src.Controllers
         public OrderController(IOrderService baseService) : base(baseService)
         {
             _orderService = baseService;
+        }
+
+        [HttpPost]
+        public override async Task<ActionResult<OrderReadDto>> CreateOne(OrderCreateDto orderCreateDto)
+        {
+            var orderReadDto = await _orderService.CreateOne(orderCreateDto);
+            return CreatedAtAction(nameof(GetOneById), new { id = orderReadDto.User }, orderReadDto);
         }
     }
 }

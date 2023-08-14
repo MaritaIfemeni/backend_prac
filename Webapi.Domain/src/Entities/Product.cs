@@ -8,6 +8,7 @@ namespace Webapi.Domain.src.Entities
         public int Stock { get; set; }
         public string Description { get; set; } = string.Empty;
         public List<Image> ProductImages { get; set; }
+        //public ICollection<OrderDetail> OrderDetails { get; set; }
     }
 }
 

@@ -7,12 +7,12 @@ namespace Webapi.Infrastructure.src.RepoImplimetations
 {
 
 
-    public class OrderRepo
+    public class OrderRepo : BaseRepo<Order>, IOrderRepo
     {
         private readonly DbSet<Order> _orders;
         private readonly DatabaseContex _context;
 
-        public OrderRepo(DatabaseContex dbContext)
+        public OrderRepo(DatabaseContex dbContext) : base(dbContext)
         {
             _orders = dbContext.Orders;
             _context = dbContext;

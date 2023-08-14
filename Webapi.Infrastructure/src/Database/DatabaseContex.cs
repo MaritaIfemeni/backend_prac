@@ -35,7 +35,7 @@ namespace Webapi.Infrastructure.src.Database
             modelBuilder.HasPostgresEnum<UserRole>();
             modelBuilder.Entity<User>().HasIndex(u => u.Email).IsUnique();
             modelBuilder.Entity<OrderDetail>().HasKey("OrderId", "ProductId");  //Add this line for the productdetail primary keys
-
+            
             modelBuilder.Entity<Product>()
                 .HasMany(p => p.ProductImages) // A product has many images
                 .WithOne()                     // An image belongs to one product

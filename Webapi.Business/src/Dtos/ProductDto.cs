@@ -7,7 +7,7 @@ namespace Webapi.Business.src.Dtos
         public string ProductName { get; set; } = string.Empty;
         public float Price { get; set; }
         public string Description { get; set; } = string.Empty;
-        public List<Image> ProductImages { get; set; } = new List<Image>();
+        public List<Image> ProductImages { get; set; } 
     }
 
     public class ProductCreateDto
@@ -16,7 +16,7 @@ namespace Webapi.Business.src.Dtos
         public float Price { get; set; }
         public int Stock { get; set; }
         public string Description { get; set; } = string.Empty;
-        public List<Image> ProductImages { get; set; } = new List<Image>();
+        public List<Image> ProductImages { get; set; }
     }
 
     public class ProductUpdateDto
@@ -25,6 +25,6 @@ namespace Webapi.Business.src.Dtos
         public float Price { get; set; }
         public int Stock { get; set; }
         public string Description { get; set; } = string.Empty;
-        public List<Image> ProductImages { get; set; } = new List<Image>();
+        public List<Image> ProductImages { get; set; }
     }
 }
