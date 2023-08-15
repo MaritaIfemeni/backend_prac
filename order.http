@@ -7,11 +7,15 @@ Content-Type: application/json
 {
   "fullName": "string",
   "deliveryAddress": "string",
-  "userId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+  "userId": "8e13d2d0-7899-4f0a-a05d-d6d65638c988",
   "orderDetails": [
     {
-      "productId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-      "quantity": 0
+      "productId": "612215a7-c2cd-4dea-8afd-aacc1e44e425",
+      "quantity": 1
+    },
+        {
+      "productId": "1f4a4b2a-ba8b-4770-85bb-7430acd93c56",
+      "quantity": 2
     }
   ]
 }

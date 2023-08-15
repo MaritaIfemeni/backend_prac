@@ -22,19 +22,26 @@ namespace Webapi.Controller.src.Controllers
         {
             var orderCreated = await _orderService.CreateOne(orderCreateDto);
             return CreatedAtAction(nameof(CreateOne), orderCreated);
-            
+
         }
 
         [Authorize]
-        public override async Task<ActionResult<OrderReadDto>> UpdateOneById([FromRoute] Guid id, [FromBody] OrderUpdateDto update)
+        public override async Task<ActionResult<OrderReadDto>> GetOneById([FromRoute] Guid id)
         {
             var user = HttpContext.User;
             var order = await _orderService.GetOneById(id);
+
+            // Check if the user is an admin
+            var isAdmin = user.IsInRole("Admin");
+            if (isAdmin)
+            {
+                return await base.GetOneById(id);
+            }
             /* resource based authorization here */
             var authorizeOwner = await _authorizationService.AuthorizeAsync(user, order, "OwnerOnly");
             if (authorizeOwner.Succeeded)
             {
-                return await base.UpdateOneById(id, update);
+                return await base.GetOneById(id);
             }
             else
             {
@@ -43,3 +50,19 @@ namespace Webapi.Controller.src.Controllers
         }
     }
 }
+// [Authorize]
+// public override async Task<ActionResult<OrderReadDto>> UpdateOneById([FromRoute] Guid id, [FromBody] OrderUpdateDto update)
+// {
+//     var user = HttpContext.User;
+//     var order = await _orderService.GetOneById(id);
+//     /* resource based authorization here */
+//     var authorizeOwner = await _authorizationService.AuthorizeAsync(user, order, "OwnerOnly");
+//     if (authorizeOwner.Succeeded)
+//     {
+//         return await base.UpdateOneById(id, update);
+//     }
+//     else
+//     {
+//         return new ForbidResult();
+//     }
+

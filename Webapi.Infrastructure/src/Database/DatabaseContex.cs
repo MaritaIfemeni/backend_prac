@@ -38,6 +38,7 @@ namespace Webapi.Infrastructure.src.Database
             modelBuilder.HasPostgresEnum<UserRole>();
             modelBuilder.HasPostgresEnum<OrderStatus>();
             modelBuilder.Entity<User>().HasIndex(u => u.Email).IsUnique();
+            modelBuilder.Entity<User>().HasIndex(u => u.Username).IsUnique();
             modelBuilder.Entity<OrderDetail>().HasKey("OrderId", "ProductId");  //Add this line for the productdetail primary keys
             
            modelBuilder.Entity<Order>()

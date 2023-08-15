@@ -1,9 +1,11 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Webapi.Business.src.Abstractions;
 using Webapi.Domain.src.Shared;
 
 namespace Webapi.Controller.src.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("api/v1/[controller]s")]
     public class CrudController<T, TReadDto, TCreateDto, TUpdateDto> : ControllerBase
@@ -18,17 +20,17 @@ namespace Webapi.Controller.src.Controllers
         [HttpGet]
         public virtual async Task<ActionResult<IEnumerable<TReadDto>>> GetAll([FromQuery] QueryOptions queryOptions)
         {
-             Console.WriteLine("again"+ queryOptions.Search ); // to see if the query options are passed
+            Console.WriteLine("again" + queryOptions.Search); // to see if the query options are passed
             return Ok(await _baseService.GetAll(queryOptions));
         }
 
         [HttpGet("{id:Guid}")]
-        public virtual async Task<ActionResult<TReadDto>> GetOneById([FromRoute]Guid id)
+        public virtual async Task<ActionResult<TReadDto>> GetOneById([FromRoute] Guid id)
         {
             return Ok(await _baseService.GetOneById(id));
         }
 
-      [HttpPost]
+        [HttpPost]
         public virtual async Task<ActionResult<TReadDto>> CreateOne([FromBody] TCreateDto dto)
         {
             var createdObject = await _baseService.CreateOne(dto);

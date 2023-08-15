@@ -1,35 +1,36 @@
-# POST http://localhost:5136/api/v1/users/admin
-# Content-Type: application/json
-
-#     {
-#     "username": "string",
-#     "firstName": "string",
-#     "lastName": "string",
-#     "email": "string",
-#     "address": "string",
-#     "city": "string",
-#     "postcode": "string",
-#     "phone": "string",
-#     "avatar": "string",
-#     "password": "string"
-#     }
-
-## create one user
-
-POST http://localhost:5136/api/v1/users
+POST http://localhost:5136/api/v1/users/admin
 Content-Type: application/json
-    
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJjMzcyZDQzZS1mNDJiLTQxNjItOTg2Mi05MTZkNjU2MjE2ODYiLCJyb2xlIjoiQWRtaW4iLCJuYmYiOjE2OTIxMTAwNjAsImV4cCI6MTY5MjExMDY2MCwiaWF0IjoxNjkyMTEwMDYwLCJpc3MiOiJwcmFjLWJhY2tlbmQifQ.dbWwzb2nim-vFM1Y8PbtpKiGbqVlj43Onec-HctKYMA
+
     {
-    "username": "Tes3",
-    "firstName": "string11",
+    "username": "My adminsad cuserx",
+    "firstName": "string",
     "lastName": "string",
-    "email": "te2@",
+    "email": "admidasdasn@xx",
     "address": "string",
     "city": "string",
     "postcode": "string",
     "phone": "string",
     "avatar": "string",
-    "password": "stringgg"
+    "password": "padsasdssxux"
+    }
+
+# ## create one user
+
+POST http://localhost:5136/api/v1/users
+Content-Type: application/json
+    
+    {
+    "username": "Tes3cfvvvc",
+    "firstName": "string11",
+    "lastName": "string",
+    "email": "te2@ccddddd",
+    "address": "string",
+    "city": "string",
+    "postcode": "string",
+    "phone": "string",
+    "avatar": "string",
+    "password": "strincggg"
     }
 
 ### Login user
@@ -38,8 +39,8 @@ POST http://localhost:5136/api/v1/auth
 Content-Type: application/json
 
     {
-    "email": "te232i2@",
-    "password": "stringgg"
+    "email": "te2@ccddddd",
+    "password": "strincggg"
     }
 
 ### Get all users
@@ -47,7 +48,8 @@ GET http://localhost:5136/api/v1/users
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiI5MTMxNGNmZC1jNzhkLTQ1M2QtYjc1Zi0xOTlkNGU3MWNiMzMiLCJyb2xlIjoiQWRtaW4iLCJuYmYiOjE2OTIwMjU0MDEsImV4cCI6MTY5MjAyNjAwMSwiaWF0IjoxNjkyMDI1NDAxLCJpc3MiOiJwcmFjLWJhY2tlbmQifQ.VfMrYgoeVicW9LIK7pnWxfa3AQIFRETdTvd4mMcss8U
 ### Get One user
-GET http://localhost:5136/api/v1/users/e8e9eafc-dce9-4d5a-9909-db981ce539ea
+GET http://localhost:5136/api/v1/users/ab098434-8d8d-48a4-9110-423d0245b9f4
+Authorization: BearereyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJhYjA5ODQzNC04ZDhkLTQ4YTQtOTExMC00MjNkMDI0NWI5ZjQiLCJyb2xlIjoiVXNlciIsIm5iZiI6MTY5MjExMTA1OCwiZXhwIjoxNjkyMTExNjU4LCJpYXQiOjE2OTIxMTEwNTgsImlzcyI6InByYWMtYmFja2VuZCJ9.a-m6fNduWzGtG3ewex_kE6hSqAXIlvjgQM2EbWdRSN0
 
 ### Delete user
 DELETE http://localhost:5136/api/v1/users/f244069e-4b03-4ce2-97c5-b664c5870720
@@ -60,7 +62,7 @@ Content-Type: application/json
     {
     "firstName": "string",
     "lastName": "string",
-    "email": "testi2@emai",
+    "email": "testi2@emcai",
     "address": "string",
     "city": "string",
     "postcode": "string",
