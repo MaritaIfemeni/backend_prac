@@ -40,6 +40,11 @@ namespace Webapi.Infrastructure.src.Database
             modelBuilder.Entity<User>().HasIndex(u => u.Email).IsUnique();
             modelBuilder.Entity<OrderDetail>().HasKey("OrderId", "ProductId");  //Add this line for the productdetail primary keys
             
+           modelBuilder.Entity<Order>()
+                .HasOne(o => o.User) // Order has one User
+                .WithMany(u => u.Orders) // User has many Orders
+                .HasForeignKey(o => o.UserId); 
+
             modelBuilder.Entity<Product>()
                 .HasMany(p => p.ProductImages) // A product has many images
                 .WithOne()                     // An image belongs to one product

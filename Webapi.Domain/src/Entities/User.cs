@@ -17,7 +17,9 @@ namespace Webapi.Domain.src.Entities
         public string Phone { get; set; } = string.Empty;
         public string Image { get; set; } = string.Empty;
         public UserRole UserRole { get; set; }
-        public List<Order>? Orders { get; set; }
+
+        [JsonIgnore]
+        public List<Order> Orders { get; set; } = new List<Order>();
 
     }
 

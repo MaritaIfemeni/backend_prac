@@ -6,8 +6,13 @@ namespace Webapi.Domain.src.Entities
     {
 
         public OrderStatus OrderStatus { get; set; }
+        public string FullName { get; set; }
+        public string DeliveryAddress { get; set; }
         public Guid UserId { get; set; }
         public List<OrderDetail> OrderDetails { get; set; }
+
+        [JsonIgnore]
+        public User User { get; set; }
     }
 
      [JsonConverter(typeof(JsonStringEnumConverter))]

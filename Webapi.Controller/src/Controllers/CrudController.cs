@@ -18,6 +18,7 @@ namespace Webapi.Controller.src.Controllers
         [HttpGet]
         public virtual async Task<ActionResult<IEnumerable<TReadDto>>> GetAll([FromQuery] QueryOptions queryOptions)
         {
+             Console.WriteLine("again"+ queryOptions.Search ); // to see if the query options are passed
             return Ok(await _baseService.GetAll(queryOptions));
         }
 
@@ -35,7 +36,7 @@ namespace Webapi.Controller.src.Controllers
         }
 
         [HttpPatch("{id:Guid}")]
-        public virtual async Task<ActionResult<TReadDto>> UpdateOneById([FromRoute] Guid id, [FromForm] TUpdateDto update)
+        public virtual async Task<ActionResult<TReadDto>> UpdateOneById([FromRoute] Guid id, [FromBody] TUpdateDto update)
         {
             return Ok(await _baseService.UpdateOneById(id, update));
         }

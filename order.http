@@ -5,23 +5,12 @@ POST http://localhost:5136/api/v1/orders
 Content-Type: application/json
 
 {
-  "orderStatus": "Processing",
-  "user": {
-    "username": "string",
-    "firstName": "string",
-    "lastName": "string",
-    "email": "string",
-    "address": "string",
-    "city": "string",
-    "postcode": "string",
-    "phone": "string",
-    "avatar": "string",
-    "userRole": "Admin"
-  },
-  "userId": "49734533-6162-4610-8cc2-c201c2aff9c2",
+  "fullName": "string",
+  "deliveryAddress": "string",
+  "userId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
   "orderDetails": [
     {
-      "productId": "ec83a984-bf89-4f44-b505-63e72df286cd",
+      "productId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
       "quantity": 0
     }
   ]

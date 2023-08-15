@@ -20,10 +20,10 @@ POST http://localhost:5136/api/v1/users
 Content-Type: application/json
     
     {
-    "username": "Testii32323",
+    "username": "Tes3",
     "firstName": "string11",
     "lastName": "string",
-    "email": "te232i2@",
+    "email": "te2@",
     "address": "string",
     "city": "string",
     "postcode": "string",

@@ -6,17 +6,18 @@ namespace Webapi.Business.src.Dtos
     {
 
         public OrderStatus OrderStatus { get; set; }
-        public UserReadDto User { get; set; }
+        public string FullName { get; set; }
+        public string DeliveryAddress { get; set; }
         public Guid UserId { get; set; }
         public List<OrderDetailReadDto> OrderDetails { get; set; }
     }
 
     public class OrderCreateDto
     {
-        public OrderStatus OrderStatus { get; set; }
-        public UserReadDto User { get; set; }
+        public string FullName { get; set; }
+        public string DeliveryAddress { get; set; }
         public Guid UserId { get; set; }
-        public List<OrderDetailCreateDto> OrderDetails { get; set; } 
+        public List<OrderDetailCreateDto> OrderDetails { get; set; }
     }
 
     public class OrderUpdateDto
