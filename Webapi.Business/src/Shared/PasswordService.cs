@@ -1,7 +1,6 @@
 using System.Security.Cryptography;
 using System.Text;
 
-
 namespace Webapi.Business.src.Shared
 {
     public class PasswordService

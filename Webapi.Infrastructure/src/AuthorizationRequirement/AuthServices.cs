@@ -1,21 +1,24 @@
 using Webapi.Domain.src.Entities;
 using Webapi.Business.src.Dtos;
-using Webapi.Business.src.Abstractions;
 using Webapi.Domain.src.RepoInterfaces;
 using Microsoft.IdentityModel.Tokens;
 using System.Security.Claims;
 using System.IdentityModel.Tokens.Jwt;
 using System.Text;
+using Webapi.Business.src.Abstractions;
+using Webapi.Business.src.Shared;
 
-namespace Webapi.Business.src.Shared
+namespace Webapi.Infrastructure.src.AuthorizationRequirement
 {
     public class AuthServices : IAuthService
     {
         private readonly IUserRepo _userRepo;
+        private readonly IConfiguration _configuration;
 
-        public AuthServices(IUserRepo userRepo)
+        public AuthServices(IUserRepo userRepo, IConfiguration configuration)
         {
             _userRepo = userRepo;
+            _configuration = configuration;
         }
 
         public async Task<string> VerifyCredentials(UserCredentialsDto credentials)
@@ -24,7 +27,7 @@ namespace Webapi.Business.src.Shared
             var isAuthenticated = PasswordService.VerifyPassword(credentials.Password, foundUserEmail.Password, foundUserEmail.Salt);
             if (!isAuthenticated)
             {
-                throw ServiceExeption.UnAuthAexeption();
+                throw new Exception("Invalid Password");
             }
             return GenerateToken(foundUserEmail);
         }
@@ -36,12 +39,12 @@ namespace Webapi.Business.src.Shared
                 new Claim(ClaimTypes.Role, user.UserRole.ToString() )
             };
 
-            var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("prackey-backend-jsdguyfsdgcjsdbchjsdb jdhscjysdcsdj"));
+            var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration.GetValue<string>("TokenSettings:SecurityKey")));
             var signingCredentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256Signature);
             var securityTokenDescriptor = new SecurityTokenDescriptor
             {
-                Issuer = "prac-backend",
-                Expires = DateTime.Now.AddMinutes(10),
+                Issuer = _configuration.GetValue<string>("TokenSettings:Issuer"),
+                Expires = DateTime.Now.AddMinutes(_configuration.GetValue<int>("TokenSettings:ExpirationMinutes")),
                 Subject = new ClaimsIdentity(claims),
                 SigningCredentials = signingCredentials
             };

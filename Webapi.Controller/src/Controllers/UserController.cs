@@ -3,7 +3,6 @@ using Webapi.Domain.src.Entities;
 using Webapi.Business.src.Dtos;
 using Webapi.Business.src.Abstractions;
 using Microsoft.AspNetCore.Mvc;
-using Webapi.Domain.src.Shared;
 
 namespace Webapi.Controller.src.Controllers
 {

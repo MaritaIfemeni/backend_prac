@@ -8,7 +8,6 @@ using Webapi.Infrastructure.src.RepoImplimetations;
 using Webapi.Business.src.RepoImplementations;
 using Webapi.Domain.src.RepoInterfaces;
 using Webapi.Business.src.Abstractions;
-using Webapi.Business.src.Shared;
 using Webapi.Infrastructure.src.AuthorizationRequirement;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -59,20 +58,24 @@ builder.Services.Configure<RouteOptions>(options =>
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 .AddJwtBearer(options =>
-{
-    options.TokenValidationParameters = new TokenValidationParameters
-    {
-        ValidateIssuer = true,
-        ValidIssuer = "prac-backend",
-        ValidateAudience = false,
-        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("prackey-backend-jsdguyfsdgcjsdbchjsdb jdhscjysdcsdj")),
-        ValidateIssuerSigningKey = true
-    };
-});
+   {
+       var configuration = new ConfigurationBuilder()
+           .AddJsonFile("appsettings.json")
+           .Build();
+
+       options.TokenValidationParameters = new TokenValidationParameters
+       {
+           ValidateIssuer = true,
+           ValidIssuer = configuration.GetValue<string>("TokenSettings:Issuer"),
+           ValidateAudience = false,
+           IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration.GetValue<string>("TokenSettings:SecurityKey"))),
+           ValidateIssuerSigningKey = true
+       };
+   });
 
 builder.Services.AddAuthorization(options =>
 {
-   options.AddPolicy("OwnerOnly", policy => policy.Requirements.Add(new OwnerOnlyRequirement()));
+    options.AddPolicy("OwnerOnly", policy => policy.Requirements.Add(new OwnerOnlyRequirement()));
 });
 
 
