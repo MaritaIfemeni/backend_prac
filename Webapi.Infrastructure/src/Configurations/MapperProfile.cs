@@ -1,7 +1,6 @@
 using AutoMapper;
 using Webapi.Business.src.Dtos;
 using Webapi.Domain.src.Entities;
-using Webapi.Infrastructure.Migrations;
 
 namespace Webapi.Infrastructure.src.Configurations
 {

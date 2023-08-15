@@ -20,8 +20,9 @@ namespace Webapi.Controller.src.Controllers
         [HttpPost]
         public override async Task<ActionResult<OrderReadDto>> CreateOne(OrderCreateDto orderCreateDto)
         {
-            var orderReadDto = await _orderService.CreateOne(orderCreateDto);
-            return CreatedAtAction(nameof(GetOneById), new { id = orderReadDto.User }, orderReadDto);
+            var orderCreated = await _orderService.CreateOne(orderCreateDto);
+            return CreatedAtAction(nameof(CreateOne), orderCreated);
+            
         }
 
         [Authorize]
