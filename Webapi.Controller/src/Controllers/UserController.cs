@@ -33,7 +33,7 @@ namespace Webapi.Controller.src.Controllers
             return CreatedAtAction(nameof(CreateAdmin), await _userService.GreateAdmin(dto));
         }
 
-
+        [Authorize(Roles = "Admin")]
         public override async Task<ActionResult<IEnumerable<UserReadDto>>> GetAll([FromQuery] QueryOptions queryOptions)
         {
             return Ok(await _userService.GetAll(queryOptions));

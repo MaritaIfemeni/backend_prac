@@ -42,7 +42,8 @@ namespace Webapi.Controller.src.Controllers
         {
             return Ok(await _baseService.UpdateOneById(id, update));
         }
-
+        
+        [Authorize(Roles = "Admin")]
         [HttpDelete("{id:Guid}")]
         public virtual async Task<ActionResult<bool>> DeleteOneById([FromRoute] Guid id)
         {
